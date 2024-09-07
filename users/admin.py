@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 from django.contrib.auth.admin import UserAdmin
-from users.models import User
+from users.models import User, Category, Post
 from django.utils.translation import gettext_lazy as _
 
 
@@ -12,3 +13,14 @@ class UserAdmin(UserAdmin):
     search_fields = ("username", "first_name", "last_name", "email")
     ordering = ("username", 'date_joined')
 
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")
+    search_fields = ("name", "id")
+
+
+@admin.register(Post)
+class PostAdmin(ModelAdmin):
+    list_display = ("id", "title", "created_at")
+    search_fields = ("title", "id")

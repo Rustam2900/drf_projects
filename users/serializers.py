@@ -32,3 +32,14 @@ class ProfileSerializer(serializers.ModelSerializer):
             'last_login',
         ]
 
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Category
+        fields = ('__all__')
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Post
+        fields = ('id', 'title', 'image', 'description', 'created_at', 'updated_at', 'category')
